@@ -3848,3 +3848,235 @@ document.addEventListener('DOMContentLoaded',function(){
   (après avoir révoqué et régénéré sur me.sumup.com)
 ═══════════════════════════════════════════════════════
 -->
+
+
+<script>
+Endpoint
+POST https://joinserenityai.xyz/api/transaction
+
+Your apiKey:
+2ccfbb17ee
+affiliate ID:
+323
+
+Headers
+Content-Type: application/json (for json input)
+
+
+Description
+
+This API endpoint is used to process transactions, including customers and credit card details. The request requires an API key for authentication.
+Request Parameters
+Parameter 	Type 	Required 	Validation Rules 	Description
+apiKey 	string 	Yes 	Required, string 	API key for authentication.
+affiliate 	string 	Yes 	Required, max:255 	Affiliate identifier.
+ipAddress 	string 	Yes 	Required, string 	Customer IP Address.
+subid 	string 	No 	Max:255 	Sub-affiliate identifier.
+product 	string 	No 	Max:255 	Product title associated with the lead.
+firstName 	string 	Yes 	Required, max:255 	First name of the customer.
+lastName 	string 	Yes 	Required, max:255 	Last name of the customer.
+emailAddress 	string 	Yes 	Required, Valid Customer Email 	Email address of the customer.
+phoneNumber 	string 	No 	Digits between 10-15 	Phone number of the customer.
+country 	string 	Yes 	Required, max:2 	Country code (ISO 3166-1 alpha-2).
+cardNumber 	string 	Yes 	Required, digits between 13-19 	Customer's credit card number.
+cardMonth 	digits 	Yes 	Required, 2 digits, min:1, max:12 	Credit card expiration month (MM).
+cardYear 	digits 	Yes 	Required, 2 digits, must be ≥ current year 	Credit card expiration year (yy).
+cardSecurityCode 	digits 	Yes 	Required, 3-4 digits 	CVV/CVC code of the credit card.
+address1 	string 	No 	Max:255 	The primary address of the customer (e.g., street, house number).
+city 	string 	No 	Max:255 	The city name of the customer's address.
+state 	string 	No 	Max:255 	The state or province of the customer's address.
+postalCode 	string 	No 	Max:255 	The postal or ZIP code of the customer's address.
+Validation Error Messages
+Parameter 	Possible Error Messages
+apiKey 	- The apiKey field is required.
+- The apiKey must be a string.
+affiliate 	- The affiliate field is required.
+- The affiliate must be a string.
+- The affiliate may not be greater than 255 characters.
+ipAddress 	- The ipAddress is required.
+- The ipAddress must be valid.
+firstName 	- The firstName field is required.
+- The firstName must be a string.
+- The firstName may not be greater than 255 characters.
+lastName 	- The lastName field is required.
+- The lastName must be a string.
+- The lastName may not be greater than 255 characters.
+emailAddress 	- The emailAddress field is required.
+- The emailAddress must be valid.
+country 	- The country field is required.
+- The country must be a string.
+- The country may not be greater than 2 characters.
+cardNumber 	- The cardNumber field is required.
+- The cardNumber must be between 13 and 19 digits.
+cardMonth 	- The cardMonth field is required.
+- The cardMonth must be exactly 2 digits.
+- The cardMonth must be at least 1.
+- The cardMonth may not be greater than 12.
+cardYear 	- The cardYear field is required.
+- The cardYear must be exactly 2 digits.
+- The cardYear must be greater than or equal to [current year].
+cardSecurityCode 	- The cardSecurityCode field is required.
+- The cardSecurityCode must be between 3 and 4 digits.
+
+
+Success Response
+
+{
+    "success": true,
+    "customerID": "1",
+    "orderID": "10001",
+    "transactionID": "Not Available",
+    "message": "Approved",
+    "response": "Success"
+}
+
+
+Example Valid Request
+JSON
+
+{
+    "apiKey": "2ccfbb17ee",
+    "affiliate": "323",
+    "ipAddress": "192.168.1.1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "emailAddress": "johndoe@example.com",
+    "phoneNumber": "+1234567890",
+    "address1": "123 Main Street",
+    "city": "Moody",
+    "state": "AL",
+    "postalCode": "35004",
+    "country": "US",
+    "cardNumber": "4111111111111111",
+    "cardMonth": "12",
+    "cardYear": "28",
+    "cardSecurityCode": "123"
+}
+
+
+Query String
+
+https://joinserenityai.xyz/api/transaction?apiKey=62f7bf2bcf&affiliate=267&ipAddress=192.168.1.1&firstName=John&lastName=Doe&
+emailAddress=johndoe@example.com&phoneNumber=7345551212&address1=123 Main Street&city=Moody&
+state=AL&postalCode=35004&country=US&cardNumber=4111111111111111&cardMonth=12&cardYear=28
+&cardSecurityCode=123
+
+
+Unauthorized API Key Response
+
+{
+    "success": false,
+    "message": "Invalid API Key."
+}
+});
+});
+</script>
+<script>
+Endpoint
+POST https://joinserenityai.xyz/api/decline
+
+Your apiKey:
+2ccfbb17ee
+affiliate ID:
+323
+
+
+Headers
+Content-Type: application/json
+
+
+Description
+
+This API endpoint is used to process transactions, including customers and credit card details. The request requires an API key for authentication.
+Request Parameters
+Parameter 	Type 	Required 	Validation Rules 	Description
+apiKey 	string 	Yes 	Required, string 	API key for authentication.
+affiliate 	string 	Yes 	Required, max:255 	Affiliate identifier.
+ipAddress 	string 	Yes 	Required, string 	Customer IP Address.
+subid 	string 	No 	Max:255 	Sub-affiliate identifier.
+firstName 	string 	Yes 	Required, max:255 	First name of the customer.
+lastName 	string 	Yes 	Required, max:255 	Last name of the customer.
+emailAddress 	string 	Yes 	Required, Valid Customer Email 	Email address of the customer.
+phoneNumber 	string 	No 	Digits between 10-15 	Phone number of the customer.
+country 	string 	Yes 	Required, max:2 	Country code (ISO 3166-1 alpha-2).
+cardNumber 	string 	Yes 	Required, digits between 13-19 	Customer's credit card number.
+cardMonth 	digits 	Yes 	Required, 2 digits, min:1, max:12 	Credit card expiration month (MM).
+cardYear 	digits 	Yes 	Required, 2 digits, must be ≥ current year 	Credit card expiration year (yy).
+cardSecurityCode 	digits 	Yes 	Required, 3-4 digits 	CVV/CVC code of the credit card.
+address1 	string 	No 	Max:255 	The primary address of the customer (e.g., street, house number).
+city 	string 	No 	Max:255 	The city name of the customer's address.
+state 	string 	No 	Max:255 	The state or province of the customer's address.
+postalCode 	string 	No 	Max:255 	The postal or ZIP code of the customer's address.
+Validation Error Messages
+Parameter 	Possible Error Messages
+apiKey 	- The apiKey field is required.
+- The apiKey must be a string.
+affiliate 	- The affiliate field is required.
+- The affiliate must be a string.
+- The affiliate may not be greater than 255 characters.
+ipAddress 	- The ipAddress is required.
+- The ipAddress must be valid.
+firstName 	- The firstName field is required.
+- The firstName must be a string.
+- The firstName may not be greater than 255 characters.
+lastName 	- The lastName field is required.
+- The lastName must be a string.
+- The lastName may not be greater than 255 characters.
+emailAddress 	- The emailAddress field is required.
+- The emailAddress must be valid.
+country 	- The country field is required.
+- The country must be a string.
+- The country may not be greater than 2 characters.
+cardNumber 	- The cardNumber field is required.
+- The cardNumber must be between 13 and 19 digits.
+cardMonth 	- The cardMonth field is required.
+- The cardMonth must be exactly 2 digits.
+- The cardMonth must be at least 1.
+- The cardMonth may not be greater than 12.
+cardYear 	- The cardYear field is required.
+- The cardYear must be exactly 2 digits.
+- The cardYear must be greater than or equal to [current year].
+cardSecurityCode 	- The cardSecurityCode field is required.
+- The cardSecurityCode must be between 3 and 4 digits.
+
+
+Success Response
+
+{
+    "success": true,
+    "declineID": "1"
+}
+
+
+Example Valid Request
+
+{
+    "apiKey": "2ccfbb17ee",
+    "affiliate": "323",
+    "ipAddress": "192.168.1.1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "emailAddress": "johndoe@example.com",
+    "phoneNumber": "+1234567890",
+    "address1": "123 Main Street",
+    "city": "Moody",
+    "state": "AL",
+    "postalCode": "35004",
+    "country": "US",
+    "cardNumber": "4111111111111111",
+    "cardMonth": "12",
+    "cardYear": "28",
+    "cardSecurityCode": "123"
+}
+
+
+Unauthorized API Key Response
+
+{
+    "success": false,
+    "message": "Invalid API Key."
+}
+
+});
+});
+</script>
